@@ -42,6 +42,15 @@
         @endforeach
     </ul>
     <br>
-    <h3>Você possui [{{$atividades_pendentes}}] atividades pendentes!</h3>
+    @info
+        @if ($atividades_pendentes === 1)
+        <p>Você possui [ 1 ] atividade pendente!</p>
+        @elseif ($atividades_pendentes > 1)
+        <p>Você possui [ {{$atividades_pendentes}} ] atividades pendentes!</p>
+        @else
+        <p>Você não possui atividades pendentes!</p>
+        @endif
+    @endinfo
+
 
 @endsection
