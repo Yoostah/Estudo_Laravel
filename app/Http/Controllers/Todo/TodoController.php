@@ -28,20 +28,18 @@ class TodoController extends Controller
     }
 
     public function store(Request $request){
-        if($request->filled('name')){
-            $nome = $request->input('name');
+        $request->validate([
+            'name' => ['required', 'string']
+        ]);
 
-            DB::insert('INSERT INTO atividades (name) VALUES (:nome)', [
-                'nome' => $nome
-            ]);
+        $nome = $request->input('name');
 
-            return redirect()->route('tarefas.list');
-        }else{
-            return redirect()
-                ->route('tarefas.add')
-                ->with('error', 'O nome da atividade não pode ser Vazio!');
+        DB::insert('INSERT INTO atividades (name) VALUES (:nome)', [
+            'nome' => $nome
+        ]);
 
-        }
+        return redirect()->route('tarefas.list');
+
     }
 
     public function edit($id){
@@ -57,28 +55,22 @@ class TodoController extends Controller
     }
 
     public function update(Request $request, $id){
-        if($request->filled('name')){
+        $request->validate([
+            'name' => ['required', 'string']
+        ]);
 
-            $name = $request->input('name');
+        $name = $request->input('name');
 
-            $data = DB::select('SELECT * FROM atividades WHERE id = :id', [
+        $data = DB::select('SELECT * FROM atividades WHERE id = :id', [
+            'id' => $id
+        ]);
+
+        if(count($data) > 0 ){
+
+            DB::update('UPDATE atividades SET name = :nome WHERE id = :id',[
+                'nome' => $name,
                 'id' => $id
             ]);
-
-            if(count($data) > 0 ){
-
-                DB::update('UPDATE atividades SET name = :nome WHERE id = :id',[
-                    'nome' => $name,
-                    'id' => $id
-                ]);
-
-            }
-
-            return redirect()->route('tarefas.list');
-        }else{
-            return redirect()
-                ->route('tarefas.edit', ['id' => $id])
-                ->with('error', 'O nome da atividade não pode ser Vazio!');
 
         }
     }

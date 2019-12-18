@@ -20,8 +20,10 @@
     @endinfo
 @endisset
 
-@if(session('error'))
-    <h3 style="color:red">{{session('error')}}</h3>
+@if($errors->any())
+    @foreach($errors->all() as $error)
+        <h3 style="color:red">{{$error}}</h3><br>
+    @endforeach
 @endif
 
 @isset($data)
