@@ -16,7 +16,9 @@
     <a href="{{route('tarefas.add')}}">Adicionar NOVA Tarefa</a><br>
 
     <ul>
-
+    @php
+        $atividades_pendentes = 0;
+    @endphp
     @foreach ($tarefas as $tarefa)
         <li>
             <a href="{{ route('tarefas.done', ['id' => $tarefa->id]) }}">
@@ -26,6 +28,10 @@
             @if($tarefa->finalizado)
                 <strike>{{ $tarefa->name }}</strike>
             @else
+                @php
+                $atividades_pendentes++;
+                @endphp
+
                 {{ $tarefa->name }}
             @endif
 
@@ -33,8 +39,9 @@
             <a href="{{ route('tarefas.delete', ['id' => $tarefa->id]) }}" onclick="return confirm('Tem certeza que deseja excluir?')">[ Deletar ]</a>
 
         </li>
-
-    @endforeach
+        @endforeach
     </ul>
+    <br>
+    <h3>Você possui [{{$atividades_pendentes}}] atividades pendentes!</h3>
 
 @endsection
