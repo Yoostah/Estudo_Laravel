@@ -6,49 +6,51 @@
 
 @info
     @if (count($tarefas) === 1)
-    <p>1 Atividade cadastrada</p>
+        <p>1 Atividade cadastrada</p>
     @elseif (count($tarefas) > 1)
-    <p>{{count($tarefas)}} atividades cadastradas</p>
+        <p>{{count($tarefas)}} atividades cadastradas</p>
     @else
-    <p>Nenhuma Atividade cadastrada!</p>
+        <p>Nenhuma Atividade cadastrada!</p>
     @endif
 @endinfo
+
     <a href="{{route('tarefas.add')}}">Adicionar NOVA Tarefa</a><br>
 
     <ul>
-    @php
-        $atividades_pendentes = 0;
-    @endphp
-    @foreach ($tarefas as $tarefa)
-        <li>
-            <a href="{{ route('tarefas.done', ['id' => $tarefa->id]) }}">
-                @if($tarefa->finalizado) [ Reabrir ] @else [ Concluir ] @endif
-            </a>
+        @php
+            $atividades_pendentes = 0;
+        @endphp
 
-            @if($tarefa->finalizado)
-                <strike>{{ $tarefa->name }}</strike>
-            @else
-                @php
-                $atividades_pendentes++;
-                @endphp
+        @foreach ($tarefas as $tarefa)
+            <li>
+                <a href="{{ route('tarefas.done', ['id' => $tarefa->id]) }}">
+                    @if($tarefa->finalizado) [ Reabrir ] @else [ Concluir ] @endif
+                </a>
 
-                {{ $tarefa->name }}
-            @endif
+                @if($tarefa->finalizado)
+                    <strike>{{ $tarefa->name }}</strike>
+                @else
+                    @php
+                    $atividades_pendentes++;
+                    @endphp
 
-            <a href="{{ route('tarefas.edit', ['id' => $tarefa->id]) }}">[ Editar ]</a>
-            <a href="{{ route('tarefas.delete', ['id' => $tarefa->id]) }}" onclick="return confirm('Tem certeza que deseja excluir?')">[ Deletar ]</a>
+                    {{ $tarefa->name }}
+                @endif
 
-        </li>
+                <a href="{{ route('tarefas.edit', ['id' => $tarefa->id]) }}">[ Editar ]</a>
+                <a href="{{ route('tarefas.delete', ['id' => $tarefa->id]) }}" onclick="return confirm('Tem certeza que deseja excluir?')">[ Deletar ]</a>
+
+            </li>
         @endforeach
     </ul>
     <br>
     @info
         @if ($atividades_pendentes === 1)
-        <p>Você possui [ 1 ] atividade pendente!</p>
+            <p>Você possui [ 1 ] atividade pendente!</p>
         @elseif ($atividades_pendentes > 1)
-        <p>Você possui [ {{$atividades_pendentes}} ] atividades pendentes!</p>
+            <p>Você possui [ {{$atividades_pendentes}} ] atividades pendentes!</p>
         @else
-        <p>Você não possui atividades pendentes!</p>
+            <p>Você não possui atividades pendentes!</p>
         @endif
     @endinfo
 

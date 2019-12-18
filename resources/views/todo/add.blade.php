@@ -11,11 +11,11 @@
 @isset($tarefas)
     @info
         @if (count($tarefas) === 1)
-        <p>1 Atividade cadastrada</p>
+            <p>1 Atividade cadastrada</p>
         @elseif (count($tarefas) > 1)
-        <p>{{count($tarefas)}} atividades cadastradas</p>
+            <p>{{count($tarefas)}} atividades cadastradas</p>
         @else
-        <p>Nenhum Atividade cadastrada!</p>
+            <p>Nenhum Atividade cadastrada!</p>
         @endif
     @endinfo
 @endisset
