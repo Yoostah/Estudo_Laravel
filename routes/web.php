@@ -30,3 +30,17 @@ Route::prefix('tarefas')->group(function(){
 
     Route::get('check/{id}', 'Todo\TodoController@check')->name('tarefas.done');  //Açao de Marcar como Feito/Não Feito
 });
+
+Route::prefix('atividades')->group(function(){
+    Route::get('/', 'atividade\AtividadeController@index')->name('atividades.list'); //Listagem de atividades
+
+    Route::get('add', 'atividade\AtividadeController@add')->name('atividades.add'); //Tela de Adição
+    Route::post('add', 'atividade\AtividadeController@store'); //Ação de Adição
+
+    Route::get('edit/{id}', 'atividade\AtividadeController@edit')->name('atividades.edit'); //Tela de Edição
+    Route::post('edit/{id}', 'atividade\AtividadeController@update'); //Ação de Edição
+
+    Route::get('delete/{id}', 'atividade\AtividadeController@delete')->name('atividades.delete'); //Ação de Deleção
+
+    Route::get('check/{id}', 'atividade\AtividadeController@check')->name('atividades.done');  //Açao de Marcar como Feito/Não Feito
+});

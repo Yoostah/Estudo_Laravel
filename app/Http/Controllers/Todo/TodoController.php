@@ -73,6 +73,8 @@ class TodoController extends Controller
             ]);
 
         }
+
+        return redirect()->route('tarefas.list');
     }
 
     public function delete($id){
