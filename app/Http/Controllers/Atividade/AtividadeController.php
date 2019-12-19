@@ -26,7 +26,7 @@ class AtividadeController extends Controller
             'name' => ['required', 'string']
         ]);
 
-        $nova_atividade = new Atividade();
+        $nova_atividade = new Atividade;
         $nova_atividade->name = $request->input('name');
         $nova_atividade->save();
 
@@ -49,28 +49,33 @@ class AtividadeController extends Controller
             'name' => ['required', 'string']
         ]);
 
+        //Necessário liberar o mass assignment no Model
+        //Atividade::find($id)->update(['name' => $request->input('name')]);
+
         $atividade_editada = Atividade::find($id);
 
         if($atividade_editada){
             $atividade_editada->name = $request->input('name');
-            $atividade_editada->update();
+            $atividade_editada->save();
         }
 
-        return redirect()->route('tarefas.list');
+        return redirect()->route('atividades.list');
     }
 
     public function delete($id){
-        $atividade_deletada = Atividade::find($id);
-        $atividade_deletada->delete();
+        Atividade::find($id)->delete();
 
-        return redirect()->route('tarefas.list');
+        return redirect()->route('atividades.list');
     }
 
     public function check($id){
         $atividade_editada = Atividade::find($id);
-        $atividade_editada->finalizado = !$atividade_editada->finalizado;
-        $atividade_editada->update();
 
-        return redirect()->route('tarefas.list');
+        if($atividade_editada){
+            $atividade_editada->finalizado = !$atividade_editada->finalizado;
+            $atividade_editada->save();
+        }
+
+        return redirect()->route('atividades.list');
     }
 }
