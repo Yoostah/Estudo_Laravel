@@ -6,36 +6,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 </head>
 
 <body>
     <ul class="nav nav-tabs nav-stacked">
         <li class="nav-item">
-            <a href="/" class="nav-link">Laravel HOME</a>
+            <a class="btn btn-secondary btn-sm ml-3" href="/" class="nav-link">Laravel HOME</a>
         </li>
         <li class="nav-item disabled">
-            <a href="/todo" class="nav-link">Listagem de Atividades</a>
+            <a class="btn btn-secondary btn-sm ml-3" href="/todo" class="nav-link">Listagem de Atividades</a>
         </li>
         <li class="nav-item">
-            <a href="/todo/add" class="nav-link">Cadastrar Atividades</a>
+            <a class="btn btn-secondary btn-sm ml-3" href="/todo/add" class="nav-link">Cadastrar Atividades</a>
         </li>
         <li class="nav-item disabled">
-            <a href="/atividades" class="nav-link">Listagem de Atividades [ Eloquent ]</a>
+            <a class="btn btn-secondary btn-sm ml-3" href="/atividades" class="nav-link">Listagem de Atividades [
+                Eloquent
+                ]</a>
         </li>
         <li class="nav-item">
-            <a href="/atividades/add" class="nav-link">Cadastrar Atividades [ Eloquent ]</a>
+            <a class="btn btn-secondary btn-sm ml-3" href="/atividades/add" class="nav-link">Cadastrar Atividades [
+                Eloquent
+                ]</a>
         </li>
         <li class="nav-item disabled">
-            <a href="/tarefas" class="nav-link">Listagem de Atividades [ Resource ]</a>
+            <a class="btn btn-secondary btn-sm ml-3" href="/tarefas" class="nav-link">Listagem de Atividades [ Resource
+                ]</a>
         </li>
         <li class="nav-item">
-            <a href="/tarefas/create" class="nav-link">Cadastrar Atividades [ Resource ]</a>
+            <a class="btn btn-secondary btn-sm ml-3" href="/tarefas/create" class="nav-link">Cadastrar Atividades [
+                Resource
+                ]</a>
         </li>
 
     </ul>
-    <header>
-        <h1>@yield('title')</h1>
-    </header><br>
+    <div class="jumbotron">
+        <h1 class="display-4" align="center">@yield('title')</h1>
+    </div>
 
     <hr>
     <section>
@@ -47,5 +55,8 @@
         Template Laravel - {{$version}}
     </footer>
 </body>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 </html>

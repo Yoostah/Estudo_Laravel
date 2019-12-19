@@ -14,7 +14,7 @@
 @endif
 @endinfo
 
-<a href="{{route('tarefas.create')}}">Adicionar NOVA Tarefa</a><br>
+<a class="btn btn-outline-dark" href="{{route('tarefas.create')}}">Adicionar NOVA Tarefa</a><br>
 
 <ul>
     @php
@@ -23,8 +23,9 @@
 
     @foreach ($tarefas as $tarefa)
     <li>
-        <a href="{{ route('tarefas.show', ['tarefa' => $tarefa->id]) }}">
-            @if($tarefa->finalizado) [ Reabrir ] @else [ Concluir ] @endif
+        <a class="@if($tarefa->finalizado) btn btn-outline-warning @else btn btn-outline-success @endif "
+            href="{{ route('tarefas.show', ['tarefa' => $tarefa->id]) }}">
+            @if($tarefa->finalizado) Reabrir @else Concluir @endif
         </a>
 
         @if($tarefa->finalizado)
@@ -37,9 +38,9 @@
         {{ $tarefa->name }}
         @endif
 
-        <a href="{{ route('tarefas.edit', ['tarefa' => $tarefa->id]) }}">[ Editar ]</a>
-        <a href="{{ route('tarefas.delete', ['id' => $tarefa->id])}}"
-            onclick="return confirm('Tem certeza que deseja excluir?')">[ Deletar ]</a>
+        <a class="btn btn-primary" href="{{ route('tarefas.edit', ['tarefa' => $tarefa->id]) }}"> Editar </a>
+        <a class="btn btn-danger" href="{{ route('tarefas.delete', ['id' => $tarefa->id])}}"
+            onclick="return confirm('Tem certeza que deseja excluir?')"> Deletar </a>
 
     </li>
     @endforeach
