@@ -14,16 +14,22 @@
             <a href="/" class="nav-link">Laravel HOME</a>
         </li>
         <li class="nav-item disabled">
-            <a href="/tarefas" class="nav-link">Listagem de Atividades</a>
+            <a href="/todo" class="nav-link">Listagem de Atividades</a>
         </li>
         <li class="nav-item">
-            <a href="/tarefas/add" class="nav-link">Cadastrar Atividades</a>
+            <a href="/todo/add" class="nav-link">Cadastrar Atividades</a>
         </li>
         <li class="nav-item disabled">
             <a href="/atividades" class="nav-link">Listagem de Atividades [ Eloquent ]</a>
         </li>
         <li class="nav-item">
             <a href="/atividades/add" class="nav-link">Cadastrar Atividades [ Eloquent ]</a>
+        </li>
+        <li class="nav-item disabled">
+            <a href="/tarefas" class="nav-link">Listagem de Atividades [ Resource ]</a>
+        </li>
+        <li class="nav-item">
+            <a href="/tarefas/create" class="nav-link">Cadastrar Atividades [ Resource ]</a>
         </li>
 
     </ul>

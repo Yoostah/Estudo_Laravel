@@ -38,7 +38,7 @@ class TodoController extends Controller
             'nome' => $nome
         ]);
 
-        return redirect()->route('tarefas.list');
+        return redirect()->route('todo.list');
 
     }
 
@@ -50,7 +50,7 @@ class TodoController extends Controller
         if(count($data) > 0 ){
             return view('todo.add', ['todo' => $data[0]]);
         }else{
-            return redirect()->route('tarefas.list');
+            return redirect()->route('todo.list');
         }
     }
 
@@ -74,7 +74,7 @@ class TodoController extends Controller
 
         }
 
-        return redirect()->route('tarefas.list');
+        return redirect()->route('todo.list');
     }
 
     public function delete($id){
@@ -82,7 +82,7 @@ class TodoController extends Controller
             'id' => $id
         ]);
 
-        return redirect()->route('tarefas.list');
+        return redirect()->route('todo.list');
 
     }
 
@@ -91,6 +91,6 @@ class TodoController extends Controller
             'id' => $id
         ]);
 
-        return redirect()->route('tarefas.list');
+        return redirect()->route('todo.list');
     }
 }

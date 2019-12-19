@@ -1,6 +1,6 @@
 @extends('layouts.template')
 
-@section('title','Listagem de Atividade')
+@section('title','Listagem de Atividade - Resources')
 
 @section('content')
 
@@ -14,7 +14,7 @@
 @endif
 @endinfo
 
-<a href="{{route('todo.add')}}">Adicionar NOVA Tarefa</a><br>
+<a href="{{route('tarefas.create')}}">Adicionar NOVA Tarefa</a><br>
 
 <ul>
     @php
@@ -23,7 +23,7 @@
 
     @foreach ($tarefas as $tarefa)
     <li>
-        <a href="{{ route('todo.done', ['id' => $tarefa->id]) }}">
+        <a href="{{ route('tarefas.show', ['tarefa' => $tarefa->id]) }}">
             @if($tarefa->finalizado) [ Reabrir ] @else [ Concluir ] @endif
         </a>
 
@@ -37,8 +37,8 @@
         {{ $tarefa->name }}
         @endif
 
-        <a href="{{ route('todo.edit', ['id' => $tarefa->id]) }}">[ Editar ]</a>
-        <a href="{{ route('todo.delete', ['id' => $tarefa->id]) }}"
+        <a href="{{ route('tarefas.edit', ['tarefa' => $tarefa->id]) }}">[ Editar ]</a>
+        <a href="{{ route('tarefas.delete', ['id' => $tarefa->id])}}"
             onclick="return confirm('Tem certeza que deseja excluir?')">[ Deletar ]</a>
 
     </li>
